@@ -68,12 +68,12 @@ Live Demo: https://acheronx0577.github.io/JavaScript-Building-a-Todo-App
 
 ### 1️⃣ Clone this repo
 ```
-git clone git@github.com:acheronx0577/JavaScript-Building-a-Date-Formatter.git
+git clone git@github.com:acheronx0577/JavaScript-Building-a-ToDo-App.git
 ```
 
 ### 2️⃣ Open the project folder
 ```
-cd JavaScript-Building-a-Date-Formatter
+cd JavaScript-Building-a-ToDo-App
 ```
 
 ### 3️⃣ Run the file
