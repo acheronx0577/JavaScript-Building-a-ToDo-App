@@ -177,7 +177,4 @@ Want to enhance this date formatter?
 This project is open-source under the **MIT License**.
 
 ---
-
 ⭐ **If you find this date formatter useful, don't forget to give it a star!** ⭐
-
----
