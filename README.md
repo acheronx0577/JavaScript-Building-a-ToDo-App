@@ -46,16 +46,6 @@ Live Demo: https://acheronx0577.github.io/JavaScript-Building-a-ToDo-App
 
 ---
 
-## 🧩 Project Files
-
-| File | Description |
-|------|-------------|
-| `index.html` | Application structure and layout |
-| `script.js` | Task logic and localStorage management ⚙️ |
-| `styles.css` | Modern styling with CSS variables 🎨 |
-
----
-
 ## 🧰 Installation & Usage
 
 ### 1️⃣ Clone this repo
