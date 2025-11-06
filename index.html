@@ -1,60 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="icon" type="image/png" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn localStorage by Building a Todo App</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO_APP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <main>
-    <h1>Todo App</h1>
-    <div class="todo-app">
-      <button id="open-task-form-btn" class="btn large-btn">
-        Add New Task
-      </button>
-      <form class="task-form hidden" id="task-form">
-        <div class="task-form-header">
-          <button id="close-task-form-btn" class="close-task-form-btn" type="button" aria-label="close">
-            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" /><path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)" /></svg>
-          </button>
-        </div>
-        <div class="task-form-body">
-          <label class="task-form-label" for="title-input">Title</label>
-          <input required type="text" class="form-control" id="title-input" value="" />
-          <label class="task-form-label" for="date-input">Date</label>
-          <input type="date" class="form-control" id="date-input" value="" />
-          <label class="task-form-label" for="description-input">Description</label>
-          <textarea class="form-control" id="description-input" cols="30" rows="5"></textarea>
-        </div>
-        <div class="task-form-footer">
-          <button id="add-or-update-task-btn" class="btn large-btn" type="submit">
-            Add Task
-          </button>
-        </div>
-      </form>
-      <dialog id="confirm-close-dialog">
-        <form method="dialog">
-          <p class="discard-message-text">Discard unsaved changes?</p>
-          <div class="confirm-close-dialog-btn-container">
-            <button id="cancel-btn" class="btn">
-              Cancel
-            </button>
-            <button id="discard-btn" class="btn">
-              Discard
-            </button>
-          </div>
-        </form>
-      </dialog>
-      <div id="tasks-container"></div>
+    <div class="terminal">
+        <header class="terminal-header">
+            <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="title-bar">
+                <span class="prompt">></span>
+                <span class="title">TODO_APP</span>
+                <span class="cursor">_</span>
+            </div>
+        </header>
+
+        <main class="terminal-body">
+            <div class="app-header">
+                <h1 class="app-title">~/tasks/management</h1>
+                <div class="status-bar">
+                    <span class="status-item" id="global-status">READY</span>
+                    <span class="status-item">v2.0.0</span>
+                    <span class="status-item">TASKS: <span id="task-count">0</span></span>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="input-group">
+                    <label for="title-input" class="input-label">
+                        <span class="label-text">TITLE</span>
+                        <span class="label-desc">[required]</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="title-input"
+                        class="terminal-input"
+                        placeholder="Enter task title..."
+                    />
+                </div>
+
+                <div class="input-group">
+                    <label for="date-input" class="input-label">
+                        <span class="label-text">DATE</span>
+                        <span class="label-desc">[optional]</span>
+                    </label>
+                    <input
+                        type="date"
+                        id="date-input"
+                        class="terminal-input"
+                    />
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="description-input" class="input-label">
+                        <span class="label-text">DESCRIPTION</span>
+                        <span class="label-desc">[optional]</span>
+                    </label>
+                    <textarea
+                        id="description-input"
+                        class="terminal-input textarea"
+                        placeholder="Task description..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <button id="add-or-update-task-btn" class="terminal-btn primary">
+                    <span class="btn-text">[ADD_TASK]</span>
+                </button>
+                <button id="clear-form-btn" class="terminal-btn secondary">
+                    <span class="btn-text">[CLEAR]</span>
+                </button>
+            </div>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <span class="output-title">TASKS</span>
+                    <span class="output-stats">
+                        TOTAL: <span id="tasks-total">0</span> | 
+                        ACTIVE: <span id="tasks-active">0</span>
+                    </span>
+                </div>
+                <div id="tasks-container" class="tasks-output">
+                    <div class="placeholder">NO_TASKS_ADDED</div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-header">
+                    <span class="info-title">TASK_STATS</span>
+                </div>
+                <div class="info-content">
+                    <div class="pattern-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">TOTAL_TASKS:</span>
+                            <span id="stats-total" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">LAST_UPDATE:</span>
+                            <span id="stats-last-update" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">STORAGE:</span>
+                            <span id="stats-storage" class="stat-value">LOCAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <div class="footer-stats">
+                <span class="stat">STATUS: <span id="status">READY</span></span>
+                <span class="stat">THEME: CATPPUCCIN_MOCHA</span>
+                <span class="stat">© 2024 TODO_APP</span>
+            </div>
+        </footer>
     </div>
-  </main>
-  <script src="script.js"></script>
+
+    <dialog id="confirm-dialog" class="terminal-dialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <span class="dialog-title">CONFIRM_ACTION</span>
+            </div>
+            <div class="dialog-body">
+                <p class="dialog-message" id="dialog-message">Are you sure?</p>
+            </div>
+            <div class="dialog-actions">
+                <button id="dialog-cancel" class="terminal-btn secondary">CANCEL</button>
+                <button id="dialog-confirm" class="terminal-btn warning">CONFIRM</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
 </body>
-
-
 </html>
