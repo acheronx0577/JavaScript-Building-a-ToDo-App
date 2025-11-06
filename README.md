@@ -20,7 +20,7 @@ This repository contains the complete portfolio of projects needed to demonstrat
 
 ## 📸 Application Preview
 
-<img width="822" height="872" alt="Screenshot 2025-10-24 151941" src="https://github.com/user-attachments/assets/1c06ed4c-e597-4423-9e2e-627fb417cf34" />
+<img width="1132" height="1191" alt="image" src="https://github.com/user-attachments/assets/b03f27ab-e204-4a71-85e7-23ae09207167" />
 
 Live Demo: https://acheronx0577.github.io/JavaScript-Building-a-ToDo-App
 
